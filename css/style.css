@@ -1,10 +1,27 @@
+/* DEVPORTFOLIO CONTENTS =========== *\
+ *    #FONTS
+ *    #VARIABLES
+ *    #BASE
+ *    #ACCESSIBILITY
+ *    #LAYOUT
+ *    #COMPONENTS
+ *    #THEMES
+\* ================================= */
+
+/* #FONTS ========================== *\
+ *    #INTER
+ *    #PRATA
+\* ================================= */
+
+/* #INTER -------------------------- */
 /* inter-regular - latin */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('../assets/fonts/inter-v12-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
+  src: local('Inter Regular'),
        url('../assets/fonts/inter-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('../assets/fonts/inter-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
        url('../assets/fonts/inter-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
@@ -17,8 +34,9 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url('../assets/fonts/inter-v12-latin-700.eot'); /* IE9 Compat Modes */
-  src: local(''),
+  src: local('Inter Bold'),
        url('../assets/fonts/inter-v12-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('../assets/fonts/inter-v12-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
        url('../assets/fonts/inter-v12-latin-700.woff') format('woff'), /* Modern Browsers */
@@ -26,16 +44,521 @@
        url('../assets/fonts/inter-v12-latin-700.svg#Inter') format('svg'); /* Legacy iOS */
 }
 
+
+
+
+
+/* #PRATA -------------------------- */
 /* prata-regular - latin */
 @font-face {
   font-family: 'Prata';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('../assets/fonts/prata-v18-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
+  src: local('Prata Regular'),
        url('../assets/fonts/prata-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('../assets/fonts/prata-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
        url('../assets/fonts/prata-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
        url('../assets/fonts/prata-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../assets/fonts/prata-v18-latin-regular.svg#Prata') format('svg'); /* Legacy iOS */
 }
+
+
+
+
+
+/* #VARIABLES ====================== *\
+ *    #COLORS
+ *    #FOCUS
+ *    #FONTS
+ *    #GUTTERS
+ *    #LEADING
+ *    #MARGINS
+ *    #PADDING
+ *    #TYPE SCALE
+\* ================================= */
+:root {
+  /* #COLORS ----------------------- */
+  --color__rich-black: #0A0A0B;
+  --color__white: #fff;
+  --color__jet: #2E3038;
+  --color__silver-chalice: #ADADAD;
+  --color__corn: #FBE850;
+
+  /* #FOCUS ------------------------ */
+  --focus__outline: 4px solid transparent;
+  --focus__ring: 0 0 0 4px;
+
+  /* #FONTS ------------------------ */
+  --font__body: 'Inter', 'Segoe UI', Tahoma, Verdana, Arial, sans-serif;
+  --font__headings: 'Prata', Georgia, 'Times New Roman', serif;
+
+  /* #GUTTERS ---------------------- */
+  --gutter__xs: .5rem;
+  --gutter__sm: 1rem;
+  --gutter__md: 1.25rem;
+  --gutter__lg: 1.5rem;
+  --gutter__xl: 2rem;
+
+  /* #LEADING ---------------------- */
+  --leading__body: 1.618;
+  --leading__buttons: 1.1;
+  --leading__headings: 1.2;
+
+  /* #MARGINS ---------------------- */
+  --m__element: 0 0 1.25rem 0;
+
+  /* #PADDING ---------------------- */
+  --p__button: .5em 1em;
+  --p__layout: 4em;
+
+  /* #TRANSITIONS ------------------ */
+  --fx__ease-in-out: 220ms all ease-in-out;
+
+  /* #TYPE SCALE ------------------- */
+  --text__base: 16px;
+  --text__preset-1: 4.209rem;
+  --text__preset-2: 3.157rem;
+  --text__preset-3: 2.369rem;
+  --text__preset-4: 1.777rem;
+  --text__preset-5: 1.333rem;
+  --text__preset-6: 1rem;
+  --text__preset-7: .875rem;
+}
+
+@media (max-width: 64rem) {
+  :root {
+    --p__layout: 4em 2em;
+    --text__preset-1: 3.052rem;
+    --text__preset-2: 2.441rem;
+    --text__preset-3: 1.953rem;
+    --text__preset-4: 1.563rem;
+    --text__preset-5: 1.25rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  :root {
+    --p__layout: 2em;
+    --text__preset-1: 2.488rem;
+    --text__preset-2: 2.074rem;
+    --text__preset-3: 1.728rem;
+    --text__preset-4: 1.44rem;
+    --text__preset-5: 1.2rem;
+  }
+}
+
+
+
+
+
+/* #BASE =========================== */
+*, *::after, *::before {box-sizing: border-box;}
+
+[hidden] {display: none;}
+
+html {
+  font-size: var(--text__base);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color__rich-black);
+  color: var(--color__silver-chalice);
+  font-family: var(--font__body);
+  font-size: var(--text__preset-6);
+  line-height: var(--leading__body);
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  text-rendering: optimizeSpeed;
+}
+
+a {transition: var(--fx__ease-in-out);}
+
+a:not([class]) {
+  color: var(--color__white);
+  text-decoration: underline;
+}
+  a:hover, a:focus {
+    color: var(--color__silver-chalice);
+    text-decoration: none;
+  }
+
+  a:focus {
+    box-shadow: var(--focus__ring) var(--color__white);
+    outline: var(--focus__outline);
+  }
+
+button, input, select, textarea {font: inherit;}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color__white);
+  font-family: var(--font__headings);
+  font-weight: normal;
+  line-height: var(--leading__headings);
+  margin: var(--m__element);
+}
+
+h1 {font-size: var(--text__preset-1);}
+h2 {font-size: var(--text__preset-2);}
+h3 {font-size: var(--text__preset-3);}
+h4 {font-size: var(--text__preset-4);}
+h5 {font-size: var(--text__preset-5);}
+h5 {font-size: var(--text__preset-6);}
+
+img, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ol:not([class]), ul:not([class]) {
+  margin: var(--m__element);
+}
+
+ol[class], ul[class] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  -webkit-hyphens: auto;
+  -webkit-hyphenate-limit-before: 3;
+  -webkit-hyphenate-limit-after: 3;
+  -webkit-hyphenate-limit-chars: 6 3 3;
+  -webkit-hyphenate-limit-lines: 2;
+  -webkit-hyphenate-limit-last: always;
+  -webkit-hyphenate-limit-zone: 8%;
+  -moz-hyphens:auto;
+  -moz-hyphenate-limit-chars: 6 3 3;
+  -moz-hyphenate-limit-lines: 2;
+  -moz-hyphenate-limit-last: always;
+  -moz-hyphenate-limit-zone: 8%;
+  -ms-hyphens: auto;
+  -ms-hyphenate-limit-chars: 6 3 3;
+  -ms-hyphenate-limit-lines: 2;
+  -ms-hyphenate-limit-last: always;
+  -ms-hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;
+  hyphenate-limit-zone: 8%;
+  margin: var(--m__element);
+}
+
+svg {fill: currentColor;}
+
+
+/* #ACCESSIBILITY ================== *\
+ *    #SCREENREADER TEXT
+ *    #SKIP LINKS
+\* ================================= */
+
+/* #SCREENREADER TEXT -------------- */
+.sr__only {
+  clip: rect(1px,1px,1px,1px);
+  position: absolute !important;
+}
+
+
+
+
+
+/* #SKIP LINKS --------------------- */
+.link__skip {
+  height: 2.75rem;
+  left: 50%;
+  padding: 1rem;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform .3s;
+ }
+  .link__skip:focus {transform: translateY(0);}
+
+
+
+
+/* #UTILITIES ===================== *\
+ *    #INLINE LIST
+\* ================================ */
+
+/* #INLINE LIST ------------------- */
+.list__inline {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+
+
+/* #LAYOUT ========================= *\
+ *    #ABOUT
+ *    #CONTACT
+ *    #HERO
+ *    #PROJECTS
+\* ================================= */
+
+/* #ABOUT -------------------------- */
+.layout__about {
+  background-color: var(--color__jet);
+  padding: var(--p__layout);
+}
+  .about__body {
+    columns: 2;
+    margin: 0 auto;
+    max-width: 87.5rem;
+  }
+
+
+
+
+
+/* #CONTACT ------------------------ */
+#contact {
+  margin: 0 auto;
+  max-width: 87.5rem;
+  padding: var(--p__layout);
+}
+  #contact p {max-width: 50ch;}
+
+
+
+
+
+/* #HERO --------------------------- */
+#hero {
+  margin: 0 auto;
+  max-width: 87.5rem;
+  padding: var(--p__layout);
+}
+  #hero h1 {max-width: 25ch;}
+
+  #hero p {max-width: 60ch;}
+
+
+
+
+
+/* #PROJECTS ----------------------- */
+.layout__projects {
+  display: grid;
+  grid-gap: var(--gutter__lg);
+  gap: var(--gutter__lg);
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  margin: 4rem 0 2rem 0;
+}
+
+
+/* #COMPONENTS ===================== *\
+ *    #BUTTONS
+ *    #CLIENT LIST
+ *    #NAVBAR
+ *    #PROJECT
+ *    #SITE FOOTER
+ *    #SITE HEADER
+\* ================================= */
+
+/* #BUTTONS ------------------------ *\
+ *    #BASE BUTTON
+ *    #BUTTON COLORS
+ *    #ICON ONLY BUTTON
+\* --------------------------------- */
+
+/* #BASE BUTTON -------------------- */
+a.button {text-decoration: none;}
+button.button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  button.button {border: 2px solid currentcolor;}
+}
+
+a.button, button.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: var(--leading__buttons);
+  text-align: center;
+}
+
+a.button:not(.icon-button),
+button.button:not(.icon-button) {
+  min-height: 2.75rem;
+  min-width: 10ch;
+  padding: var(--p__button);
+}
+
+
+
+
+/* #BUTTON COLORS ------------------- */
+.button__primary {
+  background-color: var(--color__corn);
+  color: var(--color__rich-black);
+  font-family: var(--font__headings);
+}
+  .button__primary:hover,
+  .button__primary:focus {
+    background-color: var(--color__silver-chalice);
+    color: var(--color__rich-black);
+  }
+
+  .button__primary:focus {
+    box-shadow: var(--focus__ring) var(--color__corn);
+    outline: var(--focus__outline);
+  }
+
+.button__transparent {
+  color: var(--color__white);
+}
+  .button__transparent:hover,
+  .button__transparent:focus {
+    background-color: var(--color__white);
+    color: var(--color__rich-black);
+  }
+
+  .button__transparent:focus {
+    box-shadow: var(--focus__ring) var(--color__corn);
+    outline: var(--focus__outline);
+  }
+
+
+
+
+
+/* #ICON ONLY BUTTON ------------------------ */
+.icon-button {
+  height: 2.5rem;
+  padding: .35em;
+  width: 2.5rem;
+}
+  .icon-button__icon {
+    height: 100%;
+    width: 100%;
+  }
+
+
+
+
+
+/* #CLIENT LIST ---------------------------- */
+.client__list {
+  justify-content: space-between;
+  gap: var(--gutter__sm);
+}
+
+
+
+
+
+/* #LOGO ----------------------------------- */
+.logo {
+  color: var(--color__white);
+  font-family: var(--font__headings);
+  font-size: var(--text__preset-5);
+  text-decoration: none;
+}
+  .logo:hover,
+  .logo:focus {
+      color: var(--color__corn);
+  }
+    .logo:focus {
+      box-shadow: var(--focus__ring) var(--color__corn);
+      outline: var(--focus__outline);
+    }
+
+
+
+
+
+/* #NAVBAR --------------------------------- */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gutter__sm);
+}
+  .navbar .nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+    .navbar .nav__list a {
+      color: var(--color__silver-chalice);
+      display: block;
+    }
+      .navbar .nav__list a:hover,
+      .navbar .nav__list a:focus {
+        color: var(--color__white);
+      }
+
+      .navbar .nav__list a:focus {
+        box-shadow: var(--focus__ring) var(--color__corn);
+        outline: var(--focus__outline);
+      }
+
+@media (min-width: 64rem) {
+  #nav-toggle {display: none;}
+
+  .navbar,
+  .navbar .nav__list {
+    flex-direction: row;
+  }
+
+  .navbar .nav__list {gap: var(--gutter__sm);}
+}
+
+
+
+
+
+/* #PROJECT -------------------------------- */
+.project__thumb {
+  display: block;
+  margin: var(--m__element);
+}
+  .project h2 {font-size: var(--text__preset-4);}
+
+
+
+
+
+/* #SITE FOOTER ---------------------------- */
+.site__footer {
+  background-color: var(--color__jet);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+}
+
+
+
+
+
+/* #SITE HEADER ---------------------------- */
+.site__header {
+  margin: 0 auto;
+  max-width: 87.5rem;
+  padding: var(--p__layout);
+}
+
+
+
+
+
+/* #SOCIAL LIST ---------------------------- */
+.social__list {gap: var(--gutter__sm);}
