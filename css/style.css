@@ -515,6 +515,8 @@ button.button:not(.icon-button) {
   .navbar,
   .navbar .nav__list {
     flex-direction: row;
+    flex-wrap: nowrap;
+    flex-basis: auto;
   }
 
   .navbar .nav__list {gap: var(--gutter__sm);}
